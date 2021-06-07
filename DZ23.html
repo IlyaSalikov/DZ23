@@ -13,28 +13,39 @@
     // 2. Добавление покупки в список. Учтите, что при добавлении покупки с уже существующим в списке продуктом,
     // необходимо увеличивать количество в существующей покупке, а не добавлять новую.
     // 3. Покупка продукта. Функция принимает название продукта и отмечает его как купленный.
-    const list = [
+    /*const list = [
         {name: 'Хлеб', quantity: 1, bought: 'no'},
         {name: 'Индейка', quantity: 1, bought: 'yes'},
         {name: 'Сельдерей', quantity: 1, bought: 'no'},
         {name: 'Сок яблочный', quantity: 2, bought: 'yes'},
         {name: 'Влажные салфетки', quantity: 1, bought: 'no'},
     ]
+    //1.
     const unboughtList = list.sort(function (a, b) {
-        return a.bought - b.bought
+        let x = a.bought;
+        let y = b.bought;
+        if (x < y) {return -1}
+        if (x > y) {return 1}
+        return 0;
     })
-
-    /*for(let i = 0; i < list.length; i++) {
-        if (list[i].bought === 'no') {
-            unboughtList.push(list[i].name)
-        }
-    }*/
     console.log(unboughtList);
 
-    /*let newName = prompt('Введите продукт');
-    console.log(list.push(newName));*/
+    //2.
+    let y = prompt('Добавьте продукт');
+    let z = 1;
+    if (y === 'Хлеб'||'хлеб'||'Индейка'||'индейка'||'Сельдерей'||'сельдерей'||'Сок яблочный'||'сок яблочный'||'Влажные салфетки'||'влажные салфетки') {
+        newName = {name: `${y}`, quantity: z++, bought: 'no'};//здесь должен быть другой результат, пока не додумался какой
+    } else {
+        newName = {name: `${y}`, quantity: z++, bought: 'no'};
+    }
+    console.log(list.concat(newName));
 
-
+    //3.
+    let x = prompt('Купите продукт');
+    let buy = {name: `${x}`, quantity: 1, bought: 'yes'};
+    console.log(list.concat(buy));*/
+</script>
+<script>
     //Задание 2. Создать массив, описывающий чек в магазине.
     // Каждый элемент массива состоит из названия товара, количества и цены за единицу товара.
     // Написать следующие функции.
@@ -42,6 +53,17 @@
     // 2. Подсчет общей суммы покупки.
     // 3. Получение самой дорогой покупки в чеке.
     // 4. Подсчет средней стоимости одного товара в чеке
+
+    const bill = [
+        {name: 'Хлеб', quantity: 1, price: 30},
+        {name: 'Индейка', quantity: 1, price: 400},
+        {name: 'Сельдерей', quantity: 1, price: 75},
+        {name: 'Сок яблочный', quantity: 2, price: 85},
+        {name: 'Влажные салфетки', quantity: 1, price: 60},
+    ]
+
+    //1
+
 </script>
 <script>
     //Задание 3. Создать массив css-стилей (цвет, размер шрифта, выравнивание, подчеркивание и т. д.).
