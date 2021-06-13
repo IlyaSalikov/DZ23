@@ -32,13 +32,16 @@
 
     //2.
     let y = prompt('Добавьте продукт');
-    let z = 1;
-    if (y === 'Хлеб'||'хлеб'||'Индейка'||'индейка'||'Сельдерей'||'сельдерей'||'Сок яблочный'||'сок яблочный'||'Влажные салфетки'||'влажные салфетки') {
-        newName = {name: `${y}`, quantity: z++, bought: 'no'};//здесь должен быть другой результат, пока не додумался какой
-    } else {
-        newName = {name: `${y}`, quantity: z++, bought: 'no'};
+    function addBuy() {
+        for (let i = 0; i < list.length; i++) {
+            if (list.includes(name) === true) {//глаз замылился, не вижу ошибки, но name подчёркивает
+                list[i].quantity++;
+            } else {
+               return list.concat({name: `${y}`, quantity: 1, bought: 'no'});
+            }
+        }
     }
-    console.log(list.concat(newName));
+    console.log(addBuy());
 
     //3.
     let x = prompt('Купите продукт');
@@ -54,33 +57,155 @@
     // 3. Получение самой дорогой покупки в чеке.
     // 4. Подсчет средней стоимости одного товара в чеке
 
-    const bill = [
+    /*const bill = [
         {name: 'Хлеб', quantity: 1, price: 30},
         {name: 'Индейка', quantity: 1, price: 400},
         {name: 'Сельдерей', quantity: 1, price: 75},
-        {name: 'Сок яблочный', quantity: 2, price: 85},
+        {name: 'Сок яблочный', quantity: 1, price: 85},
         {name: 'Влажные салфетки', quantity: 1, price: 60},
     ]
 
     //1
+    function printBill() {
+        for (let i = 0; i < bill.length; i++) {
+            console.log(`Наим. - ${bill[i].name}; Кол-во - ${bill[i].quantity} шт.; Цена- ${bill[i].price} руб.`);//без лога не выводится чек;
+        }
+    }
+    console.log(printBill(bill));//функцию подчёркивает и выдаёт undefined после выведения чека, без этой строки результат не выводится.
 
+    //2
+    function getTotal(bill) {
+    const initialValue = 0;
+        return bill.reduce(
+            function (acc, currentValue) {
+                return acc + currentValue.price
+            }, initialValue);
+    }
+    console.log ("Всего на сумму: " +getTotal(bill)+ "руб.");
+
+    //3
+    function getExpBuy(bill) {
+        let result = 0;
+        result = bill.reduce(
+            function(a, b) {
+            return Math.max(result, b.price);
+        });
+        return result;
+    }
+    console.log ("Самая дорогая покупка: "+getExpBuy(bill)+"руб.");//а почему 60-то рублей? =D туплю
+
+    //4
+    function getAvPrice(bill) {
+        let result = 0;
+        result = getTotal(bill) / bill.length;
+        return result;
+    }
+    console.log ("Средняя стоимость товара : "+getAvPrice(bill)+" руб.");*/
 </script>
 <script>
     //Задание 3. Создать массив css-стилей (цвет, размер шрифта, выравнивание, подчеркивание и т. д.).
     // Каждый элемент массива – это объект, состоящий из двух свойств: название стиля и значение стиля.
     // Написать функцию, которая принимает массив стилей и текст, и выводит этот текст с помощью document.write() в тегах
     // <p></p>, добавив в открывающий тег атрибут style со всеми стилями, перечисленными в массиве.
+    /*const objColor = {
+            style : "color",
+            value : "aquamarine"
+        },
+        objFontSize = {
+            style: "font-size",
+            value: "100px"
+        },
+        objAlign = {
+            style: "text-decoration",
+            value: "underline",
+        };
+
+    const  cssStyle = [objColor, objFontSize, objAlign];
+
+    function createText (style, text) {
+        document.write (` <p style = "${style[0].style}:${style[0].value}; ${style[1].style}:${style[1].value};${style[2].style}:${style[2].value};">${text}</p>`);
+    }
+    createText (cssStyle, "Hello world");*/
 </script>
 <script>
     //Задание 4. Создать массив аудиторий академии.
     // Объект-аудитория состоит из названия, количества посадочных мест (от 10 до 20) и названия факультета, для которого она предназначена.
     // Написать несколько функций для работы с ним.
+    const objClass101 = {
+            name: "101",
+            quantity: 20,
+            faculty: "ФизМат"
+        },
+        objClass102 = {
+            name: "102",
+            quantity: 10,
+            faculty: "Филологический"
+        },
+        objClass103 = {
+            name: "103",
+            quantity: 15,
+            faculty: "Мосты и Тоннели"
+        },
+        clasess = [objClass101, objClass102, objClass103];
+
     // 1. Вывод на экран всех аудиторий.
+    function showClass (arr) {
+        for (let i = 0; i < arr.length; i++) {
+            console.log (`Аудитория № ${arr[i].name}; Кол-во мест- ${arr[i].quantity}; Факультет - ${arr[i].faculty}.`);
+        }
+    }
+    showClass(clasess);
+
     // 2. Вывод на экран аудиторий для указанного факультета.
+
+/*
+    let typeFaculty = +prompt('Название факультета');
+    function showClassOfFaculty (arr, faculty) {
+        for (let i = 0; i < clasess.length; i++) {
+            if (clasess[i].faculty === typeFaculty) {
+                console.log (`Аудитория № ${clasess[i].name}; Кол-во посадочных мест- ${clasess[i].quantity}.`)
+            }
+        }
+    }
+    alert(showClassOfFaculty(clasess, typeFaculty));//????ошибку не вижу
+*/
+
     // 3. Вывод на экран только тех аудиторий, которые подходят для переданной группы.
     // Объект-группа состоит из названия, количества студентов и названия факультета.
+/*
+    let x = +prompt('Название группы');
+    let y = +prompt('Кол-во студентов');
+    let z = +prompt('Название факультета');
+    const objGroup = {x, y, z};
+
+    function findClassForGroup (classes, objGroup) {
+        for (let i = 0; i < clasess.length; i++) {
+            if (clasess.quantity === objGroup[i].y || clasess.quantity > objGroup[i].y ) {//здесь ошибку пишет, не понимаю какую
+                console.log (`Аудитория № ${classes[i].name} подходит для группы ${objGroup.name} !`)
+            }
+        }
+    }
+    alert(findClassForGroup(clasess, objGroup));
+*/
+
     // 4. Функция сортировки аудиторий по количеству мест.
+    function classSortQuantity (arr) {
+        arr.sort(function (a,b) {
+            return a.quantity - b.quantity;
+        });
+    }
+    classSortQuantity(clasess);
+    console.log(clasess);
+
     // 5. Функция сортировки аудиторий по названию (по алфавиту).
+    const alphabetSort = clasess.sort(function (a, b) {
+        let x = a.faculty;
+        let y = b.faculty;
+        if (x < y) {return -1}
+        if (x > y) {return 1}
+        return 0;
+    })
+    console.log(alphabetSort);
 </script>
 </body>
 </html>
